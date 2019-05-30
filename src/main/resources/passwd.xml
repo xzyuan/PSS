@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <groups>
-    <gourp>
+    <account>
         <name>xzyuan</name>
-        <pwd></pwd>
+        <sha-pwd>ec9169f398121c4c1ca5d630e883230b2a0a39ecfa28809791a814ad8c826189</sha-pwd>
         <fullname>谢正源</fullname>
         <email>xzyuan@mail.ustc.edu.cn</email>
-    </gourp>
+    </account>
 </groups>
-

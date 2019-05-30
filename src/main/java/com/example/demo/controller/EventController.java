@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.dao.EventDao;
-import com.example.demo.model.Event;
 import com.example.demo.model.FilterPara;
 import com.example.demo.model.PersonnelCount;
 import com.example.demo.model.Record;
@@ -9,7 +8,6 @@ import com.example.demo.service.EventService;
 import com.example.demo.service.PCService;
 import com.example.demo.util.Config;
 import io.swagger.annotations.ApiOperation;
-import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.InputStreamResource;
@@ -44,7 +42,13 @@ public class EventController {
     @ApiOperation(value = "查询event")
     @PostMapping("")
     public List<Record> getRecord(@RequestBody FilterPara filterPara) {
-        return eventDao.selectRecord(filterPara.getCardId(), filterPara.getDivisionId(), filterPara.getDoor(), filterPara.getResult(), filterPara.getStartTime(), filterPara.getEndTime());
+        String readerName1 = null;
+        String readerName2 = null;
+        if(filterPara.getDoor() != null) {
+            readerName1 = filterPara.getDoor() + ":Inner";
+            readerName2 = filterPara.getDoor() + ":Outer";
+        }
+        return eventDao.selectRecord(filterPara.getCardId(), filterPara.getDivisionId(), readerName1, readerName2, filterPara.getResult(), filterPara.getStartTime(), filterPara.getEndTime());
     }
 
     @ApiOperation(value = "根据cardID查询记录")

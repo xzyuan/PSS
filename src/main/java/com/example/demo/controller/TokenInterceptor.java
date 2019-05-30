@@ -23,10 +23,10 @@ public class TokenInterceptor implements HandlerInterceptor {
             String authorization = request.getHeader("Authorization");
             boolean verifyResult = JWTUtil.verify(authorization.substring(6), "ustc", "nsrl123");
 
-            if(verifyResult == true){
-                response.addHeader("newToken",token);
-                response.addHeader("Access-Control-Expose-Headers","newToken");
-            }
+//            if(verifyResult == true){
+//                response.addHeader("newToken",token);
+//                response.addHeader("Access-Control-Expose-Headers","newToken");
+//            }
             return verifyResult;
         }
     }
